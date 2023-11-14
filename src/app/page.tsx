@@ -38,7 +38,7 @@ const Home: React.FC<THomePageProps> = async ({ searchParams }) => {
     });
     apiResponse = response;
   }
-  console.log("apiResponse", apiResponse);
+
   return (
     <main className='p-6 flex justify-center w-full min-h-screen bg-black'>
       <div className='container'>
