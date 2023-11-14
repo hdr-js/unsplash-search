@@ -52,7 +52,7 @@ const Home: React.FC<THomePageProps> = async ({ searchParams }) => {
             <ColorFilter color={color} />
           </div>
         </div>
-        <div className='columns-1 sm:columns-2 md:columns-2 lg:columns-3 gap-8 py-6 items-start overflow-scroll'>
+        <div className='columns-1 sm:columns-2 md:columns-2 lg:columns-3 gap-8 py-6 items-start'>
           {apiResponse?.results.map((photo) => (
             <ImageTile key={photo.id} photo={photo} />
           ))}
