@@ -15,11 +15,11 @@ const ImageTile: React.FC<TImageTileProps> = async ({ photo }) => {
   return (
     <div
       key={photo.id}
-      className={`w-full overflow-hidden rounded-lg mb-8 relative shadow shadow-[${photo?.color}]/10`}
+      className={`w-full  rounded-lg mb-8 relative shadow-lg shadow-[${photo?.color}]`}
       style={{ backgroundColor: photo?.color || "silver" }}
     >
       <Image
-        className='w-full h-full'
+        className='w-full h-full rounded-lg'
         src={photo?.urls?.small}
         alt={photo?.alt_description || "image-tile-preview"}
         width={photo?.width}
