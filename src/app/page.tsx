@@ -1,12 +1,8 @@
-import { ColorId, SearchOrderBy } from "unsplash-js";
-import { Photos } from "unsplash-js/dist/methods/search/types/response";
-import { Basic } from "unsplash-js/dist/methods/photos/types";
-
-import { unsplashApi } from "@services/unsplash";
 import SortControl from "@components/SortControl/SortControl";
 import SearchField from "@components/SearchField/SearchField";
 import ImageTile from "@components/ImageTile/ImageTile";
 import ColorFilter from "@components/ColorFIlter/ColorFilter";
+import { TGetPhotosResponseType, getPhotos } from "@services/getPhotos";
 
 type THomePageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -20,24 +16,14 @@ const Home: React.FC<THomePageProps> = async ({ searchParams }) => {
   const sort =
     typeof searchParams.sort === "string" ? searchParams.sort : undefined;
 
-  let apiResponse: Photos | { results: Basic[]; total: number } | undefined;
-
-  if (searchKeyword) {
-    const { response } = await unsplashApi.search.getPhotos({
-      query: searchKeyword,
-      page: 1,
-      perPage: 20,
-      color: color as ColorId,
-      orderBy: sort as SearchOrderBy,
-    });
-    apiResponse = response;
-  } else {
-    const { response } = await unsplashApi.photos.list({
-      page: 1,
-      perPage: 20,
-    });
-    apiResponse = response;
-  }
+  let apiResponse: TGetPhotosResponseType = await getPhotos({
+    query: searchKeyword,
+    page: 1,
+    perPage: 20,
+    color,
+    sort,
+  });
+  
 
   return (
     <main className='p-6 flex justify-center w-full min-h-screen bg-black'>
