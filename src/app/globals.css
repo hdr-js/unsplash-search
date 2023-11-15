@@ -82,12 +82,10 @@ body {
 .rc-pagination-total-text a,
 .rc-pagination-total-text button {
   padding: 6px 8px;
-  height: auto;
-  min-width: 32px;
-  min-height: 32px;
+  min-width: 28px;
+  min-height: 28px;
   border-radius: 16px;
   border: 1px solid transparent;
-  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,6 +98,13 @@ body {
   -o-transition: 0.3s;
 }
 
+.rc-pagination-prev button,
+.rc-pagination-next button {
+  height: 28px;
+  width: 28px;
+  padding: 2px;
+  border: 1px solid #656f84;
+}
 .rc-pagination-item.rc-pagination-item-active a,
 .rc-pagination-item.rc-pagination-item-active a:hover,
 .rc-pagination-prev.rc-pagination-item-active a,
