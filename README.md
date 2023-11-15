@@ -1,16 +1,13 @@
 # Unsplash Search
 
-## Demo
-
-Check out the live demo [here](https://unsplash-search-e4hdblcqa-https-haiderali.vercel.app/)!
-
-<div>
-<iframe title="Unsplash Search Demo" src="https://unsplash-search-e4hdblcqa-https-haiderali.vercel.app/" width="100%" height="500px" frameborder="5" ></iframe>
-</div>
-
 ## Overview
 
 Allowing users to search for images using a keyword search, user will see the a paginated grid of images based on there search. Further more, it can filter images based on the color and also sort them, being relevant or latest first. By default user will see a default list of (latest/trending) images provided by Unsplash API.
+
+
+## Demo
+
+Check out the live demo [here](https://unsplash-search-e4hdblcqa-https-haiderali.vercel.app/)!
 
 ## Features
 
