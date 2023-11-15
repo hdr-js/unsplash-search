@@ -6,7 +6,7 @@ Allowing users to search for images using a keyword search, user will see the a 
 
 ## Demo
 
-Check out the live demo [here](https://unsplash-search-git-main-https-haiderali.vercel.app/fic: )!
+Check out the live demo [here](https://unsplash-search-git-main-https-haiderali.vercel.app/)!
 
 ## Features
 
