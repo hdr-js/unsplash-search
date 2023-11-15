@@ -27,8 +27,7 @@ const SearchField: React.FC<TSearchFieldProps> = ({ keyword, clearable }) => {
       initialRender.current = false;
       return;
     }
-
-    if (!debouncedValue) {
+    if (!debouncedValue?.length) {
       current.delete("keyword");
       current.delete("sort");
       current.delete("color");
@@ -43,7 +42,7 @@ const SearchField: React.FC<TSearchFieldProps> = ({ keyword, clearable }) => {
     const query = current.toString();
 
     router.push(`/${query ? `?${query}` : ""}`);
-  }, [debouncedValue, router, searchParams]);
+  }, [debouncedValue, router]);
 
   const handleChangeKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFieldValue(e.target.value);
@@ -60,7 +59,7 @@ const SearchField: React.FC<TSearchFieldProps> = ({ keyword, clearable }) => {
       <input
         type='text'
         placeholder='Type here to search anything...'
-        className='block w-full border-0 outline-none mr-3 bg-[#202020] text-white'
+        className='block w-full border-0 outline-0 outline-none mr-3 bg-[#202020] text-white'
         value={fieldValue}
         onChange={handleChangeKeyword}
       />
