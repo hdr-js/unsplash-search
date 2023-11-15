@@ -6,8 +6,8 @@ import { type } from "os";
 
 export type TGetPhotosParams = {
   query?: string;
-  page: 1;
-  perPage: 20;
+  page: number;
+  perPage: number;
   color?: string;
   sort?: string;
 };
@@ -27,18 +27,19 @@ export const getPhotos = async ({
   let apiResponse: TGetPhotosResponseType;
 
   if (query) {
-    const { response } = await unsplashApi.search.getPhotos({
+    const { response, errors } = await unsplashApi.search.getPhotos({
       query,
       page,
       perPage,
       color: color as ColorId,
       orderBy: sort as SearchOrderBy,
     });
+
     apiResponse = response;
   } else {
     const { response } = await unsplashApi.photos.list({
-      page: 1,
-      perPage: 20,
+      page,
+      perPage,
     });
     apiResponse = response;
   }

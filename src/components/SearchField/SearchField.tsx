@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { useDebounce } from "use-debounce";
+import { pages } from "next/dist/build/templates/app-page";
 
 type TSearchFieldProps = {
   keyword?: string;
@@ -31,8 +32,12 @@ const SearchField: React.FC<TSearchFieldProps> = ({ keyword, clearable }) => {
       current.delete("keyword");
       current.delete("sort");
       current.delete("color");
+      current.delete("page");
     } else {
-      current.set("keyword", debouncedValue);
+      if (current.get("keyword") !== debouncedValue) {
+        current.set("keyword", debouncedValue);
+        current.delete("page");
+      }
     }
 
     const query = current.toString();
@@ -55,7 +60,7 @@ const SearchField: React.FC<TSearchFieldProps> = ({ keyword, clearable }) => {
       <input
         type='text'
         placeholder='Type here to search anything...'
-        className='block w-full border-0 outline-0 mr-3 bg-[#202020] text-white'
+        className='block w-full border-0 outline-none mr-3 bg-[#202020] text-white'
         value={fieldValue}
         onChange={handleChangeKeyword}
       />

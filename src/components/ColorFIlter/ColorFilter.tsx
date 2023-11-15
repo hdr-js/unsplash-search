@@ -39,7 +39,7 @@ const ColorFilter: React.FC<TColorFilterProps> = ({ color }) => {
       onChange={handleColorValueChange}
       className={`text-white bg-[#202020] px-3 py-3 cursor-${
         disabled ? "not-allowed" : "pointer"
-      } border-r-8 border-transparent rounded-full outline-none w-48 disabled:text-gray-500`}
+      } border-r-8 border-transparent rounded-full outline-none w-36 disabled:text-gray-500`}
     >
       <option value=''>Colors: All</option>
       {colors?.map((color) => (

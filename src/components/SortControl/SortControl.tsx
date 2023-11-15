@@ -38,7 +38,7 @@ const SortControl: React.FC<TSortControlProps> = ({ sort }) => {
       onChange={handleSortValueChange}
       className={`text-white bg-[#202020] px-3 py-3 cursor-${
         disabled ? "not-allowed" : "pointer"
-      } border-r-8 border-transparent rounded-full outline-none w-48 disabled:text-gray-500`}
+      } border-r-8 border-transparent rounded-full outline-none w-32 disabled:text-gray-500`}
     >
       {sortKeys?.map((sortKey) => (
         <option key={sortKey} value={sortKey} className='text-sm text-white'>
