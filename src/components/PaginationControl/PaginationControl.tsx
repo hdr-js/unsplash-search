@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import { useRouter, useSearchParams } from "next/navigation";
 import Pagination from "rc-pagination";

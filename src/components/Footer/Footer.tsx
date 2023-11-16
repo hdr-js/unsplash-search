@@ -1,3 +1,5 @@
+import React from "react";
+
 const Footer: React.FC = () => {
   return (
     <footer className='flex justify-center items-center h-8 bg-black'>

@@ -1,3 +1,4 @@
+import React from "react";
 import { CodeBracketIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 
@@ -8,6 +9,7 @@ const Header: React.FC = () => {
 
       <Link target='blank' href={"https://github.com/hdr-js/unsplash-search"}>
         <CodeBracketIcon
+          data-testid='code-bracket-icon'
           className='h-5 w-5 text-gray-400 cursor-pointer'
           aria-hidden='true'
         />

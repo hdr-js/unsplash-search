@@ -1,3 +1,4 @@
+import React from "react";
 import { DocumentMagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
 import SortControl from "@components/SortControl/SortControl";
@@ -5,7 +6,7 @@ import SearchField from "@components/SearchField/SearchField";
 import ImageTile from "@components/ImageTile/ImageTile";
 import ColorFilter from "@components/ColorFIlter/ColorFilter";
 import { TGetPhotosResponseType, getPhotos } from "@services/getPhotos";
-import PaginationControl from "@components/Loader/PaginationControl";
+import PaginationControl from "@components/PaginationControl/PaginationControl";
 
 type THomePageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
