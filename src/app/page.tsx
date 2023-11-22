@@ -20,7 +20,6 @@ type THomePageProps = {
 };
 
 const Home: React.FC<THomePageProps> = async ({ searchParams }) => {
-  console.log("searchParams", searchParams);
   const searchKeyword = searchParams?.keyword ?? "";
   const color = searchParams?.color;
   const orderBy = searchParams?.orderBy;
