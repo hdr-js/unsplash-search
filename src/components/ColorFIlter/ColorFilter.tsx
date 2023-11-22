@@ -19,6 +19,7 @@ const ColorFilter: React.FC<TColorFilterProps> = ({ color }) => {
   const handleColorValueChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newColorValue = e.target.value;
 
+    current.delete("page");
     if (!newColorValue) {
       current.delete("color");
     } else {
