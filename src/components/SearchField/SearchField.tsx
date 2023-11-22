@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { useDebounce } from "use-debounce";
-import { pages } from "next/dist/build/templates/app-page";
 
 type TSearchFieldProps = {
   keyword?: string;
@@ -30,7 +29,7 @@ const SearchField: React.FC<TSearchFieldProps> = ({ keyword, clearable }) => {
     }
     if (!debouncedValue?.length) {
       current.delete("keyword");
-      current.delete("sort");
+      current.delete("orderBy");
       current.delete("color");
       current.delete("page");
     } else {
@@ -58,6 +57,7 @@ const SearchField: React.FC<TSearchFieldProps> = ({ keyword, clearable }) => {
         />
       </div>
       <input
+        data-testid='search-field'
         type='text'
         placeholder='Type here to search anything...'
         className='block w-full border-0 outline-0 outline-none mr-3 bg-[#202020] text-white'

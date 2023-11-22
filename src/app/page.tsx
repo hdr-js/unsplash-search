@@ -1,34 +1,39 @@
 import React from "react";
 import { DocumentMagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
-import SortControl from "@components/SortControl/SortControl";
-import SearchField from "@components/SearchField/SearchField";
-import ImageTile from "@components/ImageTile/ImageTile";
-import ColorFilter from "@components/ColorFIlter/ColorFilter";
-import { TGetPhotosResponseType, getPhotos } from "@services/getPhotos";
-import PaginationControl from "@components/PaginationControl/PaginationControl";
+import SortControl from "@/components/SortControl/SortControl";
+import SearchField from "@/components/SearchField/SearchField";
+import ImageTile from "@/components/ImageTile/ImageTile";
+import ColorFilter from "@/components/ColorFIlter/ColorFilter";
+import getPhotos, { TGetPhotosResponseType } from "@/services/getPhotos";
+import PaginationControl from "@/components/PaginationControl/PaginationControl";
 
 type THomePageProps = {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams:
+    | {
+        keyword?: string;
+        color?: string;
+        orderBy?: string;
+        page?: string;
+      }
+    | undefined;
 };
 
 const Home: React.FC<THomePageProps> = async ({ searchParams }) => {
-  const searchKeyword =
-    typeof searchParams.keyword === "string" ? searchParams.keyword : "";
-  const color =
-    typeof searchParams.color === "string" ? searchParams.color : undefined;
-  const sort =
-    typeof searchParams.sort === "string" ? searchParams.sort : undefined;
-  const page =
-    typeof searchParams.page === "string" ? parseInt(searchParams.page) : 1;
+  console.log("searchParams", searchParams);
+  const searchKeyword = searchParams?.keyword ?? "";
+  const color = searchParams?.color;
+  const orderBy = searchParams?.orderBy;
+  const page = parseInt(searchParams?.page || "1");
 
   let apiResponse: TGetPhotosResponseType = await getPhotos({
     query: searchKeyword,
     page,
     perPage: 20,
     color,
-    sort,
+    orderBy,
   });
+
   const totalPossibleRecords = Math.min(apiResponse?.total || 0, 4000);
 
   return (
@@ -36,7 +41,7 @@ const Home: React.FC<THomePageProps> = async ({ searchParams }) => {
       <div className='container'>
         <SearchField keyword={searchKeyword} clearable />
         <div className='h-12 flex justify-end items-center gap-6 mt-6'>
-          <SortControl sort={sort} />
+          <SortControl orderBy={orderBy} />
           <ColorFilter color={color} />
         </div>
         {totalPossibleRecords && (

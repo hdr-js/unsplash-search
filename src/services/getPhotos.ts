@@ -6,43 +6,48 @@ import { type } from "os";
 
 export type TGetPhotosParams = {
   query?: string;
-  page: number;
-  perPage: number;
+  page?: number;
+  perPage?: number;
   color?: string;
-  sort?: string;
+  orderBy?: string;
 };
 
 export type TGetPhotosResponseType =
   | Photos
   | { results: Basic[]; total: number }
   | undefined;
-
-export const getPhotos = async ({
+const getPhotos = async ({
   query,
   page,
   perPage,
   color,
-  sort,
+  orderBy,
 }: TGetPhotosParams): Promise<TGetPhotosResponseType> => {
   let apiResponse: TGetPhotosResponseType;
 
-  if (query) {
-    const { response, errors } = await unsplashApi.search.getPhotos({
-      query,
-      page,
-      perPage,
-      color: color as ColorId,
-      orderBy: sort as SearchOrderBy,
-    });
+  try {
+    if (query) {
+      const { response, errors } = await unsplashApi.search.getPhotos({
+        query,
+        page,
+        perPage,
+        color: color as ColorId,
+        orderBy: orderBy as SearchOrderBy,
+      });
 
-    apiResponse = response;
-  } else {
-    const { response } = await unsplashApi.photos.list({
-      page,
-      perPage,
-    });
-    apiResponse = response;
+      apiResponse = response;
+    } else {
+      const { response } = await unsplashApi.photos.list({
+        page,
+        perPage,
+      });
+      apiResponse = response;
+    }
+  } catch (error) {
+    console.log("something happend", error);
   }
 
   return apiResponse;
 };
+
+export default getPhotos;

@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import { Basic } from "unsplash-js/dist/methods/photos/types";
-import UserPortfolio from "@components/UserPortfolio/UserPortfolio";
+import UserPortfolio from "@/components/UserPortfolio/UserPortfolio";
 import { HeartIcon } from "@heroicons/react/24/outline";
 
 // Basic type provided by upsplash-api SDK is missing the tags but it is present in the response.

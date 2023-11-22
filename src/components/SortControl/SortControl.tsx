@@ -4,13 +4,13 @@ import React from "react";
 import { ChangeEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { sortKeys } from "@utils/constants";
+import { sortKeys } from "@/utils/constants";
 
 type TSortControlProps = {
-  sort?: (typeof sortKeys)[number];
+  orderBy?: (typeof sortKeys)[number];
 };
 
-const SortControl: React.FC<TSortControlProps> = ({ sort }) => {
+const SortControl: React.FC<TSortControlProps> = ({ orderBy }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -20,9 +20,9 @@ const SortControl: React.FC<TSortControlProps> = ({ sort }) => {
     const newSortValue = e.target.value;
 
     if (!newSortValue) {
-      current.delete("sort");
+      current.delete("orderBy");
     } else {
-      current.set("sort", newSortValue);
+      current.set("orderBy", newSortValue);
     }
 
     const query = current.toString();
@@ -35,7 +35,7 @@ const SortControl: React.FC<TSortControlProps> = ({ sort }) => {
   return (
     <select
       disabled={disabled}
-      value={sort || "relevant"}
+      value={orderBy || "relevant"}
       onChange={handleSortValueChange}
       className={`text-white bg-[#202020] px-3 py-3 cursor-${
         disabled ? "not-allowed" : "pointer"

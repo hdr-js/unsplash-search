@@ -4,7 +4,7 @@ import React from "react";
 import { ChangeEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { colors } from "@utils/constants";
+import { colors } from "@/utils/constants";
 
 type TColorFilterProps = {
   color?: (typeof colors)[number];
